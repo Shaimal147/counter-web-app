@@ -1,12 +1,23 @@
 function createCounter() {
     let count = 0
+    let countEl = document.getElementById("count-el")
 
-    return function increment() {
+    function increment() {
         count += 1
-        document.getElementById("count-el").innerText = count
-        console.log("Count incremented by one")
+        countEl.innerText = count
+    }
+
+    function save() {
+        console.log(`The current count is ${count}.`)
+    }
+
+    return {
+        increment,
+        save
     }
 }
 
-const increment = createCounter()
+
+
+const counter = createCounter()
 
