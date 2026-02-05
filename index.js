@@ -1,28 +1,36 @@
 function createCounter() {
     let count = 0
     let countHistory = []
-    let countEl = document.getElementById("count-el")
-    let saveEl = document.getElementById("save-el")
+
+    const countEl = document.getElementById("count-el")
+    const saveEl = document.getElementById("save-el")
+    const incBtn = document.getElementById("increment-btn")
+    const saveBtn = document.getElementById("save-btn")
+
+    incBtn.addEventListener("click", increment)
+    saveBtn.addEventListener("click", save)
 
     function increment() {
         count += 1
-        countEl.innerText = count
+        countEl.textContent = count
     }
+
+
+    /*function increment(e) {
+        console.log("click detail:", e.detail, "time:", e.timeStamp)
+        count += 1
+        countEl.textContent = count
+    }*/
+
 
     function save() {
         countHistory.push(count)
-        saveEl.innerText = `Previous entries: ${countHistory.join(" - ")}`
+        saveEl.textContent = `Previous entries: ${countHistory.join(" - ")}`
         count = 0
-        countEl.innerText = 0
-    }
-
-    return {
-        increment,
-        save
+        countEl.textContent = 0
     }
 }
 
 
 
 const counter = createCounter()
-
